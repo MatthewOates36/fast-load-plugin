@@ -1,0 +1,72 @@
+plugins {
+    id 'java-gradle-plugin'
+    id 'maven-publish'
+//    id 'signing'
+//    id 'com.gradle.plugin-publish' version '1.1.0'
+    id 'org.jetbrains.kotlin.jvm' version '1.9.0'
+}
+
+group = 'org.team11260'
+version = '0.1-beta1'
+
+repositories {
+    mavenCentral()
+    google()
+}
+
+dependencies {
+    compileOnly 'com.android.tools.build:gradle:8.0.2'
+}
+
+publishing {
+    publications {
+        library(MavenPublication) {
+            groupId = 'org.team11260'
+            artifactId = 'fast-load-plugin'
+
+            from components.java
+
+            pom {
+                name = 'FTC Fast Load Plugin'
+                description = 'Allows for hot swapping Team Code without restarting FtcRobotController'
+                licenses {
+                    license {
+                        name = 'MIT'
+                        url = 'https://spdx.org/licenses/MIT.txt'
+                    }
+                }
+                developers {
+                    developer {
+                        id = 'matthewo'
+                        name = 'Matthew Oates'
+                        email = 'uni.oates@gmail.com'
+                    }
+                }
+            }
+        }
+    }
+    repositories {
+        maven {
+            url = providers.gradleProperty('matthewo.publish.secret').get()
+        }
+    }
+}
+
+//signing {
+//    sign publishing.publications.mavenJava
+//}
+
+gradlePlugin {
+    plugins {
+        fastload {
+            id = 'org.team11260.fast-load-plugin'
+            implementationClass = 'org.team11260.FastLoadPlugin'
+            displayName = 'FastLoad'
+            description = 'Allows for hot swapping Team Code without restarting FtcRobotController'
+            tags.set(['ftc', 'java', 'kotlin'])
+        }
+    }
+
+    website = "https://github.com/Team11260/FtcFastLoadPlugin"
+    vcsUrl = "https://github.com/Team11260/FtcFastLoadPlugin"
+}
