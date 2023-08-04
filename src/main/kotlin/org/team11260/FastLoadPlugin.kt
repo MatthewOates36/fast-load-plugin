@@ -13,6 +13,9 @@ const val DEX_BASE_NAME_CONVENTION = "FastLoadDex"
 const val BUNDLE_BASE_NAME_CONVENTION = "FastLoadBundle"
 const val DEPLOY_LOCATION_CONVENTION = "/storage/emulated/0/FIRST/"
 
+/**
+ * Main plugin class to add all the tasks to the Gradle registry and manage task dependencies.
+ */
 class FastLoadPlugin : Plugin<Project> {
 
     override fun apply(project: Project) {

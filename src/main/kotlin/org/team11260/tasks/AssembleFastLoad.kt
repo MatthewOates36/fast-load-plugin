@@ -11,6 +11,9 @@ import org.gradle.api.tasks.Input
 import org.gradle.api.tasks.InputDirectory
 import org.gradle.api.tasks.TaskAction
 
+/**
+ * Assembles the merged dex jar file from the individual dex jar.
+ */
 abstract class AssembleFastLoad : DefaultTask() {
 
     @InputDirectory

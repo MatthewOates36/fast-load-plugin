@@ -9,6 +9,9 @@ import org.gradle.api.tasks.InputDirectory
 import org.gradle.api.tasks.InputFile
 import org.gradle.api.tasks.TaskAction
 
+/**
+ * Uses ADB to send an intent to the fast-load library in app to preform a reload and waits for it to complete.
+ */
 abstract class ReloadFastLoad : DefaultTask() {
 
     @InputFile

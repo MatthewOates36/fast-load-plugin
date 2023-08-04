@@ -7,6 +7,9 @@ import org.gradle.api.tasks.InputDirectory
 import org.gradle.api.tasks.OutputDirectory
 import org.gradle.jvm.tasks.Jar
 
+/**
+ * Compiles a jar from the dex files produced by the Android task mergeExtDexDebug.
+ */
 abstract class DexFastLoad : Jar() {
 
     @OutputDirectory

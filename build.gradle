@@ -7,7 +7,7 @@ plugins {
 }
 
 group = 'org.team11260'
-version = '0.1-beta1'
+version = '0.1'
 
 repositories {
     mavenCentral()

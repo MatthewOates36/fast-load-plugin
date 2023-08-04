@@ -9,6 +9,9 @@ import org.gradle.api.tasks.InputDirectory
 import org.gradle.api.tasks.InputFile
 import org.gradle.api.tasks.TaskAction
 
+/**
+ * Uses ADB to copy the merged dex jar to the robot controller.
+ */
 abstract class DeployFastLoad : DefaultTask() {
 
     @InputDirectory
