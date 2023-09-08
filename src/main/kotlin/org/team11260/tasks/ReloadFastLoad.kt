@@ -19,7 +19,7 @@ abstract class ReloadFastLoad : DefaultTask() {
 
     @TaskAction
     fun execute() {
-        project.exec {
+        val result = project.exec {
             it.commandLine(
                 getAdbExecutable().get(),
                 "shell",
@@ -29,5 +29,6 @@ abstract class ReloadFastLoad : DefaultTask() {
                 "team11260.RELOAD_FAST_LOAD",
             )
         }
+        println("reload exit value: ${result.exitValue}")
     }
 }
