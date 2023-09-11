@@ -7,7 +7,14 @@ plugins {
 }
 
 group = 'org.team11260'
-version = '0.1'
+version = '0.1.1'
+
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(11)
+    }
+}
 
 repositories {
     mavenCentral()
