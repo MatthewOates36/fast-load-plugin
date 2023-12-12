@@ -35,7 +35,6 @@ class FastLoadPlugin : Plugin<Project> {
             task.getOutputDir().convention(extension.getOutputDir())
             task.getDexBaseName().convention(extension.getDexBaseName())
 
-
             task.dependsOn("dexBuilderDebug")
         }
         val assembleFastLoad = project.tasks.register("assembleFastLoad", AssembleFastLoad::class.java) { task ->
