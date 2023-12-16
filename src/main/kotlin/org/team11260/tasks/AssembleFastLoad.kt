@@ -32,6 +32,12 @@ abstract class AssembleFastLoad : DefaultTask() {
         val outputFile = getOutputDir().file("${getBundleBaseName().get()}.jar").get().asFile
         outputFile.delete()
 
-        D8.run(D8Command.builder().addProgramFiles(inputFile.toPath()).setMode(CompilationMode.DEBUG).setOutput(outputFile.toPath(), OutputMode.DexIndexed).build())
+        D8.run(
+            D8Command.builder()
+                .addProgramFiles(inputFile.toPath())
+                .setMode(CompilationMode.DEBUG)
+                .setOutput(outputFile.toPath(), OutputMode.DexIndexed)
+                .build()
+        )
     }
 }

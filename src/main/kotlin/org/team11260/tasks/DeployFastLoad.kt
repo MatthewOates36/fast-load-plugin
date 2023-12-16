@@ -8,6 +8,8 @@ import org.gradle.api.tasks.Input
 import org.gradle.api.tasks.InputDirectory
 import org.gradle.api.tasks.InputFile
 import org.gradle.api.tasks.TaskAction
+import org.gradle.process.internal.ExecException
+import java.io.ByteArrayOutputStream
 
 /**
  * Uses ADB to copy the merged dex jar to the robot controller.
@@ -28,13 +30,17 @@ abstract class DeployFastLoad : DefaultTask() {
 
     @TaskAction
     fun execute() {
-        project.exec {
-            it.commandLine(
-                getAdbExecutable().get(),
-                "push",
-                getOutputDir().file("${getBundleBaseName().get()}.jar").get().asFile.absolutePath,
-                getDeployLocation().get(),
-            )
+        try {
+            project.exec {
+                it.commandLine(
+                    getAdbExecutable().get(),
+                    "push",
+                    getOutputDir().file("${getBundleBaseName().get()}.jar").get().asFile.absolutePath,
+                    getDeployLocation().get(),
+                )
+            }
+        } catch (e: ExecException) {
+            error("Failed to connect to robot, ensure ADB connected to robot.")
         }
     }
 }

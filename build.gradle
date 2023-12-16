@@ -1,13 +1,18 @@
 plugins {
     id 'java-gradle-plugin'
     id 'maven-publish'
-//    id 'signing'
-//    id 'com.gradle.plugin-publish' version '1.1.0'
     id 'org.jetbrains.kotlin.jvm' version '1.9.0'
 }
 
 group = 'org.team11260'
-version = '0.1'
+version = '0.1.2'
+
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(11)
+    }
+}
 
 repositories {
     mavenCentral()
@@ -47,14 +52,10 @@ publishing {
     }
     repositories {
         maven {
-            url = providers.gradleProperty('matthewo.publish.secret').get()
+            url = providers.gradleProperty('matthewo.publish.secret').getOrElse("")
         }
     }
 }
-
-//signing {
-//    sign publishing.publications.mavenJava
-//}
 
 gradlePlugin {
     plugins {
