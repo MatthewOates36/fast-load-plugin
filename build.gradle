@@ -7,7 +7,14 @@ plugins {
 }
 
 group = 'org.team11260'
-version = '0.1'
+version = '0.1.2-beta1'
+
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(11)
+    }
+}
 
 repositories {
     mavenCentral()
@@ -47,7 +54,7 @@ publishing {
     }
     repositories {
         maven {
-            url = providers.gradleProperty('matthewo.publish.secret').get()
+            url = providers.gradleProperty('matthewo.publish.secret').getOrElse("")
         }
     }
 }
