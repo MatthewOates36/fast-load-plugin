@@ -22,7 +22,7 @@ abstract class DexFastLoad : Jar() {
         this.dependsOn("dexBuilderDebug")
         this.destinationDirectory.set(this.getOutputDir())
         this.archiveBaseName.set(this.getDexBaseName())
-        this.from(project.buildDir.resolve("intermediates/project_dex_archive/debug/out")) {
+        this.from(project.buildDir.resolve("intermediates/project_dex_archive/debug/dexBuilderDebug/out")) {
             it.exclude("*.jar")
         }
     }

@@ -1,12 +1,18 @@
 package org.team11260
 
+import com.android.build.api.artifact.Artifact
+import com.android.build.api.artifact.Artifacts
+import com.android.build.api.artifact.SingleArtifact
 import com.android.build.api.variant.AndroidComponentsExtension
+import com.android.build.api.variant.ScopedArtifacts
 import org.gradle.api.Plugin
 import org.gradle.api.Project
+import org.gradle.api.tasks.bundling.Jar
 import org.team11260.tasks.AssembleFastLoad
 import org.team11260.tasks.DeployFastLoad
 import org.team11260.tasks.DexFastLoad
 import org.team11260.tasks.ReloadFastLoad
+import kotlin.jvm.java
 
 
 const val DEX_BASE_NAME_CONVENTION = "FastLoadDex"
